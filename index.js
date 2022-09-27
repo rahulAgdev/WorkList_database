@@ -137,8 +137,12 @@ app.post("/delete", function (req, res) {
 //   workitems.push(item);
 //   res.redirect("/work");
 // }); the form method is posting to the home route ... so write an if conditional in the home route saying that if the value of the button is work then we have to use this post request
-app.listen(tempPort, () => {
-  console.log("Being hosted at http://localhost:" + tempPort);
+let port = process.env.PORT;
+if(port == null || port == ""){
+  port == 3000;
+}
+app.listen(port, () => {
+  console.log("Server has started.");
 });
 
 /* 

@@ -1,0 +1,31 @@
+<%- include("header") -%>
+    <div id="heading" class="box">
+        <h1 style="color: rgb(0, 0, 0);"> TodoList: </h1>
+            <h1><%= listTitle %></h1>
+            
+    </div>
+    <div class="box">
+        <% newElementarray.forEach(function(element){ %>
+        <form action="/delete" method="post">
+            <div class="item">           
+            <input type="checkbox" onchange="this.form.submit()" name="checkbox" value="<%=element._id %>">
+            <p><%= element.name %></p>
+            <input type="hidden" name="listName" value="<%= listTitle %>"></input>
+            <!-- listTitle will give us the page where we need to redirect after deletion  -->
+        </form>
+        </div>
+        <% }) %>
+        <form action="/" method="post" class="item">
+            <input type="text" placeholder="Add new element" name="newItem" autocomplete="off"/>
+            <button type="submit" name="list" value="<%= listTitle %>">+</button>
+          </form>
+    </div>
+    <!--we can use scriptlet tag to add conditionals. add to the part of code without html tags. we can write some basic js code in the html using the scriptlet tag. it only allows control flow js and not a lot of js.-->
+    
+    <!-- we have to add this scriptlet tag on every line because it parses the code line by line. we cannot add one at the start and one at the end. -->
+    <!-- <p>Try not to die today</p>
+    <p>Why are you not working :(</p> -->
+    
+<%- include("footer") -%>
+    
+  
